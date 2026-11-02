@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Remix: Zoya - AI Voice Assistant</title>
+    <meta name="description" content="A sassy, witty, and intelligent Indian female AI voice assistant." />
+    <meta property="og:title" content="Remix: Zoya - AI Voice Assistant" />
+    <meta property="og:description" content="A sassy, witty, and intelligent Indian female AI voice assistant." />
+    <script>
+      (function() {
+        try {
+          var _fetch = window.fetch;
+          Object.defineProperty(window, 'fetch', {
+            configurable: true,
+            enumerable: true,
+            get: function() {
+              return _fetch;
+            },
+            set: function(val) {
+              _fetch = val;
+            }
+          });
+        } catch (e) {}
+
+        try {
+          if (typeof Window !== 'undefined' && Window.prototype) {
+            var desc = Object.getOwnPropertyDescriptor(Window.prototype, 'fetch');
+            if (desc && !desc.set && desc.configurable) {
+              Object.defineProperty(Window.prototype, 'fetch', {
+                configurable: true,
+                enumerable: desc.enumerable,
+                get: desc.get || function() { return window.fetch; },
+                set: function(val) {
+                  Object.defineProperty(this, 'fetch', {
+                    configurable: true,
+                    enumerable: true,
+                    writable: true,
+                    value: val
+                  });
+                }
+              });
+            }
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
